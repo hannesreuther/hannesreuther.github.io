@@ -12,11 +12,12 @@
          <form id="connection-information-form">
             <b>Hostname or IP Address:</b> 
             <!-- <input id="host" type="text" name="host" value="test.mosquitto.org"><br> -->
-            <input id="host" type="text" name="host" value="broker.mqttdashboard.com"><br>
+            <input id="host" type="text" name="host" value="broker.emqx.io"><br>
             <b>Port:</b>
-            <input id="port" type="text" name="port" value="8000"><br>
+            <!-- for publication on https use SSL on port 8084 with client that supports it-->
+            <input id="port" type="text" name="port" value="8084"><br>
             <b>Topic:</b>
-            <input id="topic" type="text" name="topic" value="rwth/dt/color#"><br><br>
+            <input id="topic" type="text" name="topic" value="rwth/color/#"><br><br>
             <input type="button" onclick="startConnect()" value="Connect">
             <input type="button" onclick="startDisconnect()" value="Disconnect">
          </form>

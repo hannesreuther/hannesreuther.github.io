@@ -76,6 +76,17 @@
             }
         }
 
+
+        scene.input.on("mouseclicked", function (coords) {
+
+            var hit = scene.pick({ canvasPos: coords }); if (hit) { var entity = hit.entity; var metaObject = viewer.metaScene.metaObjects[entity.id]; if (metaObject) { console.log(JSON.stringify(metaObject.getJSON(), null, "\t")); } else { const parent = entity.parent; if (parent) { metaObject = viewer.metaScene.metaObjects[parent.id]; if (metaObject) {
+                            console.log(JSON.stringify(metaObject.getJSON(), null, "\t"));
+                        }
+                    }
+                }
+            }
+        });
+
     }
 
 </script>
