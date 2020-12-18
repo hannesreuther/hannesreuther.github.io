@@ -3,7 +3,7 @@
     "name": "Aachen City",
     "models": [
         {
-            "id": "models",
+            "id": "design",
             "name": "Aachen City"
         }
     ],
@@ -20,7 +20,7 @@
     },
     "viewerContent": {
         "modelsLoaded": [
-            "models"
+            "design"
         ]
     },
     "viewerState": {
