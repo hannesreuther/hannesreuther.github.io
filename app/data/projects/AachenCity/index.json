@@ -1,5 +1,5 @@
 {
-    "id": "aachenCity",
+    "id": "AachenCity",
     "name": "AachenCity",
     "models": [
         {
@@ -24,7 +24,7 @@
         ]
     },
     "viewerState": {
-        "tabOpen": "objects",
+        "tabOpen": "models",
         "expandObjectsTree": 3,
         "expandClassesTree": 1,
         "expandStoreysTree": 1,
