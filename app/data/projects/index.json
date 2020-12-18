@@ -27,6 +27,10 @@
     {
       "id": "AachenCity",
       "name": "Aachen City"
+    },
+    {
+      "id": "Test",
+      "name": "Test"
     }
   ]
 }
