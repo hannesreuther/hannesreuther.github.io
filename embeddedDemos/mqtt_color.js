@@ -48,7 +48,7 @@ function startConnect() {
         // Subscribe to the requested topic
         
         console.log("subscribing");
-        const  channel = "rwth/color/#" ;
+        const  channel = "rwth/color/hannes" ;
         client.subscribe(channel);
         console.log ("subscribed to "+channel);
     }
@@ -66,6 +66,7 @@ function startConnect() {
 // Called when a message arrives
     function onMessageArrived(message) {
         console.log(message.payloadString)
+        
 
         let iframeElement = document.getElementById("embeddedViewer");
         let color = JSON.parse(message.payloadString);
@@ -79,7 +80,7 @@ function startConnect() {
                 viewer.scene.selectedObjects[selObj].colorize = color["color"];
                 viewer.scene.selectedObjects[selObj].colorize = color["color"];
                 const objectIds = viewer.metaScene.getObjectIDsInSubtree(selObj);
-                viewer.scene.selectedObjects[selObj].selected = false; 
+                viewer.scene.selectedObjects[selObj].selected = false;
                 // const dmax = math.lenVec3(dir);
                 // let d = 0;
 
@@ -112,7 +113,7 @@ function startConnect() {
     function init() {
         
         startConnect();
-        const iframeBaseURL = "./../app/index.html?projectId=Systhema&modelId=170133_Asvest_20200131";
+        const iframeBaseURL = "./../app/index.html?projectId=AachenCity";
         let iframeElement = document.getElementById("embeddedViewer");
         if (!iframeElement) {
             throw "IFRAME not found";
@@ -124,18 +125,18 @@ function startConnect() {
         window.changeColorByMQTT = function (checkbox) {
 
                 console.log(checkbox)
-                viewer = iframeElement.contentWindow.bimViewer.viewer;
+                let viewer = iframeElement.contentWindow.bimViewer.viewer;
                 
                 console.log(viewer.metaScene.metaObjects["12NjfiY$5BWxO3cGvRvhMM"])
 
                 //var obj = viewer.scene.components[entity.id];
                 var obj = viewer.scene.objects["12NjfiY$5BWxO3cGvRvhMM"];
                 var res= obj.colorize = [1,0,0] ;
-                for (selObj in viewer.scene.selectedObjects ){
+                for (let selObj in viewer.scene.selectedObjects ){
                    
                     console.log(selObj, obj);
 
-                    viewer.scene.selectedObjects[selObj].colorize = [1,0,0];
+                    viewer.scene.selectedObjects[selObj].colorize = [0,1,1];
                     viewer.scene.selectedObjects[selObj].selected = false; 
                 };
                 //teapotMesh.visible = false; -->
