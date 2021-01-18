@@ -1,3 +1,5 @@
+
+
 "use strict";
 
 let current_r = 0;
@@ -26,8 +28,9 @@ function startConnect() {
 
     // Set callback handlers
    // client.onConnectionLost = onConnectionLost;
-    client.onMessageArrived = onMessageArrived;
-
+    client.onMessageArrived = onMessageArrived ;
+    console.info("arriving");
+    console.info(JSONprop("pimmel"))
     // Connect the client, if successful, call onConnect function
     client.connect({ 
         onSuccess: onConnect,
@@ -51,6 +54,7 @@ function startConnect() {
         const  channel = "rwth/color/hannes" ;
         client.subscribe(channel);
         console.log ("subscribed to "+channel);
+        
     }
 
     // Called when the client loses its connection
@@ -66,8 +70,8 @@ function startConnect() {
 // Called when a message arrives
     function onMessageArrived(message) {
         console.log(message.payloadString)
-        
 
+         
         let iframeElement = document.getElementById("embeddedViewer");
         let color = JSON.parse(message.payloadString);
         console.log(color["color"]);
@@ -75,12 +79,19 @@ function startConnect() {
         console.log(iframeElement);
         let  viewer = iframeElement.contentWindow.bimViewer.viewer;
         console.log("selected Objects:\r"+ viewer.scene.selectedObjects);
+
+        /*
+         
+*/
         for (let selObj in viewer.scene.selectedObjects ){
                 console.log(selObj);
                 viewer.scene.selectedObjects[selObj].colorize = color["color"];
                 viewer.scene.selectedObjects[selObj].colorize = color["color"];
                 const objectIds = viewer.metaScene.getObjectIDsInSubtree(selObj);
                 viewer.scene.selectedObjects[selObj].selected = false;
+                
+        
+                
                 // const dmax = math.lenVec3(dir);
                 // let d = 0;
 
@@ -96,6 +107,7 @@ function startConnect() {
                 //     scene.setObjectsOffset(objectIds, math.mulVec3Scalar([1,9,1], (d / dmax), []));
                 // });
                 };
+
         //document.getElementById("messages").innerHTML += '<span>Topic: ' + message.destinationName + '  | ' + message.payloadString + '</span><br/>';
         
 
@@ -103,6 +115,27 @@ function startConnect() {
 //        console.log(color);
 
     }
+
+function JSONprop (text) {
+
+   let functext= text;
+
+    return functext
+    /*const jsonfile = require('jsonfile')
+        const file = 'example.json'
+        jsonfile.readFile(file, function (err, obj) {
+              if (err) console.error(err)
+                
+              obj['metaObjects'][1]['color'] = color
+        obj['metaObjects'][2]['lightlevel'] = 10
+        console.dir(obj)
+        console.info("pimmel")
+        })
+
+
+*/
+}
+
 
 // Called when the disconnection button is pressed
     function startDisconnect() {
